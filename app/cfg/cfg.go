@@ -3,7 +3,7 @@ package cfg
 // Conf is the configuration for accessing bitnodes endpoint
 type config struct {
 	COMHTTP    []string
-	Port       string
+	Port       map[string]string
 	Out        string
 	RPC        RPClogin
 	CF         CloudFlare

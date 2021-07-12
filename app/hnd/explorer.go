@@ -3,7 +3,7 @@ package hnd
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/comhttp/jorm-server/app/jorm/a"
+	"github.com/comhttp/enso/app/jorm/a"
 	"github.com/gorilla/mux"
 	"net/http"
 	"strconv"

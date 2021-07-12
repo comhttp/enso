@@ -3,9 +3,9 @@ package a
 import (
 	"fmt"
 
-	"github.com/comhttp/jorm-server/app/cfg"
+	"github.com/comhttp/enso/app/cfg"
 
-	"github.com/comhttp/jorm-server/pkg/utl"
+	"github.com/comhttp/enso/pkg/utl"
 )
 
 func (rpc *BitNode) GetRawMemPool() interface{} {

@@ -2,12 +2,12 @@ package explorer
 
 import (
 	"fmt"
-	"github.com/comhttp/jorm-server/app/cfg"
-	"github.com/comhttp/jorm-server/app/jdb"
-	"github.com/comhttp/jorm-server/app/jorm/a"
-	"github.com/comhttp/jorm-server/app/jorm/coin"
-	"github.com/comhttp/jorm-server/app/jorm/n"
-	"github.com/comhttp/jorm-server/pkg/utl"
+	"github.com/comhttp/enso/app"
+	"github.com/comhttp/enso/app/cfg"
+	"github.com/comhttp/enso/app/jorm/a"
+	"github.com/comhttp/enso/app/jorm/n"
+	"github.com/comhttp/enso/pkg/utl"
+	"github.com/comhttp/jorm/jdb"
 	"path/filepath"
 )
 
@@ -16,7 +16,7 @@ type Explorer struct {
 }
 
 // GetExplorer updates the data from blockchain of a coin in the database
-func GetExplorer(j *jdb.JDB, c coin.Coins) {
+func GetExplorer(j *jdb.JDB, c app.Coins) {
 	var b []string
 
 	for _, coin := range c.C {

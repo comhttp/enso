@@ -2,9 +2,9 @@ package n
 
 import (
 	"fmt"
-	"github.com/comhttp/jorm-server/app/cfg"
-	"github.com/comhttp/jorm-server/app/jorm/a"
-	"github.com/comhttp/jorm-server/pkg/utl"
+	"github.com/comhttp/enso/app/cfg"
+	"github.com/comhttp/enso/app/jorm/a"
+	"github.com/comhttp/enso/pkg/utl"
 )
 
 // GetBitNodeStatus returns the full set of information about a node

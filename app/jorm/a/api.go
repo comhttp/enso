@@ -3,8 +3,8 @@ package a
 import (
 	"fmt"
 
-	"github.com/comhttp/jorm-server/app/cfg"
-	"github.com/comhttp/jorm-server/pkg/utl"
+	"github.com/comhttp/enso/app/cfg"
+	"github.com/comhttp/enso/pkg/utl"
 )
 
 // BitNodes is array of bitnodes addresses

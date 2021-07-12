@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/comhttp/jorm-server/app"
-	"github.com/comhttp/jorm-server/app/cfg"
+	"github.com/comhttp/enso/app"
+	"github.com/comhttp/enso/app/cfg"
 	"log"
 )
 
 func main() {
-	j := app.NewJORM()
+	j := app.NewENSO()
 
-	fmt.Println("Listening on port: ", cfg.C.Port)
+	fmt.Println("Listening on port: ", cfg.C.Port["enso"])
 	log.Fatal(j.WWW.ListenAndServe())
 }

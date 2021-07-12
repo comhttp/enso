@@ -3,7 +3,7 @@ package cfg
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/comhttp/jorm-server/pkg/utl"
+	"github.com/comhttp/enso/pkg/utl"
 	"io/ioutil"
 	"os"
 	"path/filepath"
