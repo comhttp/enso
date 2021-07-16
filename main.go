@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/comhttp/enso/app"
-	"github.com/comhttp/enso/app/cfg"
+	"github.com/comhttp/jorm/pkg/cfg"
 	"log"
 )
 

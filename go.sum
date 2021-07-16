@@ -42,8 +42,8 @@ github.com/comhttp/jdb v0.0.0-20210616194111-c64a29bc7b84/go.mod h1:e6kEhG3ZY2cV
 github.com/comhttp/jdbc v0.0.0-20210617223700-b69aee42434e h1:GUIaaJGKPpoVkT8dZFcovcC1e0e1dp9kteJs07xqe3A=
 github.com/comhttp/jdbc v0.0.0-20210617223700-b69aee42434e/go.mod h1:dNu4gD8Fxd/eNizQS9E19M5HV87G962a0e3uLn6y/kw=
 github.com/comhttp/jorm v0.0.0-20210616230107-1f5dbb050db9/go.mod h1:VxBffKxuMmXfYfSryyEDDi3J5P6t5cfmaVfFqNa8Xgo=
-github.com/comhttp/jorm v0.0.0-20210716123636-7dfdd150b018 h1:zEFhwAJGYs6yC/x2Rrci1AtJmesYrGZl4fqEs7iNSPY=
-github.com/comhttp/jorm v0.0.0-20210716123636-7dfdd150b018/go.mod h1:oXQvYh9oa3bBVX4Yzi2bNJ85YtGPqNNtOSfEZ72of4w=
+github.com/comhttp/jorm v0.0.0-20210716172540-19ba9a77bfbe h1:2Q2z4AUWm8idXZpZVA30mlkaHVhDH9GJFJqeaHnUrZU=
+github.com/comhttp/jorm v0.0.0-20210716172540-19ba9a77bfbe/go.mod h1:niVg1bGGUrNL8gy/JEjq47nRtXGd7G+4qZbd6rux4jw=
 github.com/coreos/bbolt v1.3.2/go.mod h1:iRUV2dpdMOn7Bo10OQBFzIJO9kkE559Wcmn+qkEiiKk=
 github.com/coreos/etcd v3.3.10+incompatible/go.mod h1:uF7uidLiAD3TWHmW31ZFd/JWoc32PjwdhPthX9715RE=
 github.com/coreos/etcd v3.3.13+incompatible/go.mod h1:uF7uidLiAD3TWHmW31ZFd/JWoc32PjwdhPthX9715RE=

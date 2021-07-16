@@ -1,19 +1,16 @@
 package app
 
 import (
-	"fmt"
-	"github.com/comhttp/enso/app/cfg"
-	"github.com/gorilla/mux"
-	"net/http"
-	"regexp"
-
 	"encoding/json"
-	"github.com/comhttp/jorm/coins"
-
-	//"github.com/comhttp/enso/pkg/utl"
-
+	"fmt"
+	"github.com/comhttp/jorm/mod/coins"
+	"github.com/comhttp/jorm/mod/nodes"
+	"github.com/comhttp/jorm/pkg/cfg"
+	"github.com/gorilla/mux"
 	"github.com/tdewolff/minify"
 	mjson "github.com/tdewolff/minify/json"
+	"net/http"
+	"regexp"
 )
 
 type home struct {
@@ -117,7 +114,6 @@ func (e *ENSO) allCoinsHandler(w http.ResponseWriter, r *http.Request) {
 
 // CoinsHandler handles a request for coin data
 func (e *ENSO) nodeCoinsHandler(w http.ResponseWriter, r *http.Request) {
-	//out, err := json.Marshal(coin.LoadCoinsBase())
 	out, err := json.Marshal(coins.GetNodeCoins(e.JDB))
 	if err != nil {
 		fmt.Println("Error encoding JSON")
@@ -128,7 +124,6 @@ func (e *ENSO) nodeCoinsHandler(w http.ResponseWriter, r *http.Request) {
 
 // CoinsHandler handles a request for coin data
 func (e *ENSO) coinsBinHandler(w http.ResponseWriter, r *http.Request) {
-	//out, err := json.Marshal(coin.LoadCoinsBase())
 	out, err := json.Marshal(coins.GetCoinsBin(e.JDB))
 	if err != nil {
 		fmt.Println("Error encoding JSON")
@@ -143,8 +138,14 @@ func (e *ENSO) CoinNodesHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // NodeHandler handles a request for (?)
-func (e *ENSO) NodeHandler(w http.ResponseWriter, r *http.Request) {
-
+func (e *ENSO) nodeHandler(w http.ResponseWriter, r *http.Request) {
+	v := mux.Vars(r)
+	out, err := json.Marshal(nodes.GetNode(e.JDB, v["coin"], v["nodeip"]))
+	if err != nil {
+		fmt.Println("Error encoding JSON")
+		return
+	}
+	w.Write([]byte(out))
 }
 
 // NodeHandler handles a request for (?)

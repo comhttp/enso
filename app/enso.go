@@ -1,11 +1,11 @@
 package app
 
 import (
-	"github.com/comhttp/enso/app/cfg"
 	"github.com/comhttp/enso/pkg/utl"
-	"github.com/comhttp/jorm/coins"
-	"github.com/comhttp/jorm/explorer"
-	"github.com/comhttp/jorm/jdb"
+	"github.com/comhttp/jorm/mod/coins"
+	"github.com/comhttp/jorm/mod/explorer"
+	"github.com/comhttp/jorm/pkg/cfg"
+	"github.com/comhttp/jorm/pkg/jdb"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"net/http"
@@ -50,7 +50,7 @@ func handler(e *ENSO) http.Handler {
 	c.HandleFunc("/", e.CoinsHandler).Methods("GET")
 	c.HandleFunc("/{coin}", e.CoinHandler).Methods("GET")
 
-	i := c.PathPrefix("/info").Subrouter()
+	i := s.PathPrefix("/info").Subrouter()
 	i.HandleFunc("/all", e.allCoinsHandler).Methods("GET")
 	i.HandleFunc("/node", e.nodeCoinsHandler).Methods("GET")
 	i.HandleFunc("/rest", e.restCoinsHandler).Methods("GET")
@@ -59,10 +59,11 @@ func handler(e *ENSO) http.Handler {
 	i.HandleFunc("/usable", e.usableCoinsHandler).Methods("GET")
 	i.HandleFunc("/bin", e.coinsBinHandler).Methods("GET")
 
-	//a.HandleFunc("/{coin}/nodes", e.CoinNodesHandler).Methods("GET")
-	//a.HandleFunc("/{coin}/{nodeip}", e.NodeHandler).Methods("GET")
+	n := s.PathPrefix("/n").Subrouter()
+	//n.HandleFunc("/{coin}/nodes", e.CoinNodesHandler).Methods("GET")
+	n.HandleFunc("/{coin}/{nodeip}", e.nodeHandler).Methods("GET")
 
-	b := s.PathPrefix("/b").Subrouter()
+	b := s.PathPrefix("/e").Subrouter()
 	b.HandleFunc("/{coin}/status", e.ViewStatus).Methods("GET")
 	b.HandleFunc("/{coin}/blocks/{per}/{page}", e.ViewBlocks).Methods("GET")
 	//b.HandleFunc("/{coin}/lastblock", hnd.LastBlock).Methods("GET")
@@ -81,13 +82,8 @@ func handler(e *ENSO) http.Handler {
 
 	//j.Headers("Access-Control-Allow-Origin", "*")
 
-	//f := s.PathPrefix("/e").Subrouter()
-	//e.HandleFunc("/{coin}/blocks/{per}/{page}", h.ViewBlocks).Methods("GET")
-	//e.HandleFunc("/{coin}/lastblock", h.LastBlock).Methods("GET")
 	//f.HandleFunc("/{sec}/{coin}/{type}/{file}", e.ViewJSONfolder)
 	//e.HandleFunc("/{sec}/{coin}/{app}/{type}/{file}", h.ViewJSONfolder)
-	//e.HandleFunc("/{coin}/hash/{blockhash}", h.ViewHash).Methods("GET")
-	//e.HandleFunc("/{coin}/tx/{txid}", h.ViewTx).Methods("GET")
 
 	//a.HandleFunc("/", o.goodBye).Methods("GET")
 	//f.Headers("Access-Control-Allow-Origin", "*")
