@@ -4,6 +4,7 @@ import (
 	"github.com/comhttp/enso/app/cfg"
 	"github.com/comhttp/enso/pkg/utl"
 	"github.com/comhttp/jorm/coins"
+	"github.com/comhttp/jorm/explorer"
 	"github.com/comhttp/jorm/jdb"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
@@ -12,9 +13,10 @@ import (
 )
 
 type ENSO struct {
-	Coins coins.Coins
-	WWW   *http.Server
-	JDB   *jdb.JDB
+	Coins    coins.Coins
+	WWW      *http.Server
+	JDB      *jdb.JDB
+	Explorer *explorer.Explorer
 }
 
 func NewENSO() *ENSO {
@@ -23,6 +25,7 @@ func NewENSO() *ENSO {
 	e := &ENSO{
 		JDB: jdb.NewJDB(cfg.C.JDBservers),
 	}
+	e.Explorer = explorer.GetExplorer(e.JDB)
 	e.WWW = &http.Server{
 		Handler:      handler(e),
 		Addr:         ":" + cfg.C.Port["enso"],
@@ -59,17 +62,18 @@ func handler(e *ENSO) http.Handler {
 	//a.HandleFunc("/{coin}/nodes", e.CoinNodesHandler).Methods("GET")
 	//a.HandleFunc("/{coin}/{nodeip}", e.NodeHandler).Methods("GET")
 
-	//b := s.PathPrefix("/b").Subrouter()
-	//b.HandleFunc("/{coin}/blocks/{per}/{page}", hnd.ViewBlocks).Methods("GET")
+	b := s.PathPrefix("/b").Subrouter()
+	b.HandleFunc("/{coin}/status", e.ViewStatus).Methods("GET")
+	b.HandleFunc("/{coin}/blocks/{per}/{page}", e.ViewBlocks).Methods("GET")
 	//b.HandleFunc("/{coin}/lastblock", hnd.LastBlock).Methods("GET")
-	//b.HandleFunc("/{coin}/block/{id}", hnd.ViewBlock).Methods("GET")
-	//b.HandleFunc("/{coin}/tx/{txid}", hnd.ViewTx).Methods("GET")
+	b.HandleFunc("/{coin}/block/{id}", e.ViewBlock).Methods("GET")
+	b.HandleFunc("/{coin}/tx/{txid}", e.ViewTx).Methods("GET")
 	//
-	//b.HandleFunc("/{coin}/mempool", hnd.ViewRawMemPool).Methods("GET")
-	//b.HandleFunc("/{coin}/mining", hnd.ViewMiningInfo).Methods("GET")
-	//b.HandleFunc("/{coin}/info", hnd.ViewInfo).Methods("GET")
-	//b.HandleFunc("/{coin}/peers", hnd.ViewPeers).Methods("GET")
-	//b.HandleFunc("/{coin}/market", hnd.ViewMarket).Methods("GET")
+	b.HandleFunc("/{coin}/mempool", e.ViewRawMemPool).Methods("GET")
+	b.HandleFunc("/{coin}/mining", e.ViewMiningInfo).Methods("GET")
+	b.HandleFunc("/{coin}/info", e.ViewInfo).Methods("GET")
+	b.HandleFunc("/{coin}/peers", e.ViewPeers).Methods("GET")
+	//b.HandleFunc("/{coin}/market", e.ViewMarket).Methods("GET")
 
 	//j := s.PathPrefix("/j").Subrouter()
 
