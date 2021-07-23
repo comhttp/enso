@@ -24,6 +24,7 @@ func (e *ENSO) ViewBlocks(w http.ResponseWriter, r *http.Request) {
 	page, _ := strconv.Atoi(v["page"])
 	ex := explorer.GetExplorer(e.JDB)
 	lastblock := ex.Status[v["coin"]].Blocks
+	fmt.Println("lastblocklastblocklastblock", lastblock)
 
 	lb := map[string]interface{}{
 		"currentPage": page,
