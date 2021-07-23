@@ -3,6 +3,7 @@ package app
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/comhttp/jorm/mod/explorer"
 	"github.com/gorilla/mux"
 	"net/http"
 	"strconv"
@@ -21,7 +22,9 @@ func (e *ENSO) ViewBlocks(w http.ResponseWriter, r *http.Request) {
 	v := mux.Vars(r)
 	per, _ := strconv.Atoi(v["per"])
 	page, _ := strconv.Atoi(v["page"])
-	lastblock := e.Explorer.Status[v["coin"]].Blocks
+	ex := explorer.GetExplorer(e.JDB)
+	lastblock := ex.Status[v["coin"]].Blocks
+
 	lb := map[string]interface{}{
 		"currentPage": page,
 		"pageCount":   lastblock / per,
