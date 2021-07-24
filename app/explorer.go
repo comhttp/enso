@@ -23,14 +23,14 @@ func (e *ENSO) ViewBlocks(w http.ResponseWriter, r *http.Request) {
 	per, _ := strconv.Atoi(v["per"])
 	page, _ := strconv.Atoi(v["page"])
 	ex := explorer.GetExplorer(e.JDB)
-	lastblock := ex.Status[v["coin"]].Blocks
+	lastblock := ex.Status[v["coin"]].Blocks - 1
 	fmt.Println("lastblocklastblocklastblock", lastblock)
 
 	lb := map[string]interface{}{
 		"currentPage": page,
 		"pageCount":   lastblock / per,
 		"blocks":      e.Explorer.GetBlocks(v["coin"], per, page),
-		"lastBlock":   lastblock - 1,
+		"lastBlock":   lastblock,
 	}
 
 	out, err := json.Marshal(lb)
