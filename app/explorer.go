@@ -30,7 +30,7 @@ func (e *ENSO) ViewBlocks(w http.ResponseWriter, r *http.Request) {
 		"currentPage": page,
 		"pageCount":   lastblock / per,
 		"blocks":      e.Explorer.GetBlocks(v["coin"], per, page),
-		"lastBlock":   lastblock,
+		"lastBlock":   lastblock - 1,
 	}
 
 	out, err := json.Marshal(lb)
