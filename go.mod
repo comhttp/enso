@@ -3,9 +3,8 @@ module github.com/comhttp/enso
 go 1.16
 
 require (
-	github.com/DataDog/zstd v1.4.8 // indirect
 	github.com/comhttp/jdb v0.0.0-20210714214118-31fffcade923 // indirect
-	github.com/comhttp/jorm v0.0.0-20210716174920-03658a01be4a
+	github.com/comhttp/jorm v0.0.0-20210724021824-d6c0446c3999
 	github.com/dgraph-io/badger/v3 v3.2103.1 // indirect
 	github.com/disintegration/imaging v1.6.2
 	github.com/felixge/httpsnoop v1.0.2 // indirect
@@ -25,5 +24,6 @@ require (
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	golang.org/x/text v0.3.6
 	google.golang.org/protobuf v1.27.1 // indirect
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	willnorris.com/go/gifresize v1.0.0
 )
