@@ -3,7 +3,7 @@ package app
 import (
 	"github.com/comhttp/enso/pkg/utl"
 	"github.com/comhttp/jorm/mod/coins"
-	"github.com/comhttp/jorm/mod/explorer"
+	"github.com/comhttp/jorm/mod/explorers"
 	"github.com/comhttp/jorm/pkg/cfg"
 	"github.com/comhttp/jorm/pkg/jdb"
 	"github.com/gorilla/handlers"
@@ -16,7 +16,7 @@ type ENSO struct {
 	Coins    coins.Coins
 	WWW      *http.Server
 	JDB      *jdb.JDB
-	Explorer *explorer.Explorer
+	Explorer *explorers.Explorer
 }
 
 func NewENSO() *ENSO {
@@ -25,7 +25,7 @@ func NewENSO() *ENSO {
 	e := &ENSO{
 		JDB: jdb.NewJDB(cfg.C.JDBservers),
 	}
-	e.Explorer = explorer.GetExplorer(e.JDB)
+	e.Explorer = explorers.GetExplorer(e.JDB)
 	e.WWW = &http.Server{
 		Handler:      handler(e),
 		Addr:         ":" + cfg.C.Port["enso"],

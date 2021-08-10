@@ -3,7 +3,8 @@ module github.com/comhttp/enso
 go 1.16
 
 require (
-	github.com/comhttp/jorm v0.0.0-20210724124652-31c3d277b0bb
+	github.com/comhttp/explorer v0.0.0-20210808032334-7b24f9319bf2
+	github.com/comhttp/jorm v0.0.0-20210810150927-7c3e0baceff6
 	github.com/disintegration/imaging v1.6.2
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
