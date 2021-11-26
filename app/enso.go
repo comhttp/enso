@@ -25,7 +25,7 @@ func NewENSO() *ENSO {
 	e := &ENSO{
 		JDB: jdb.NewJDB(cfg.C.JDBservers),
 	}
-	e.Explorer = explorers.GetExplorer(e.JDB)
+	//e.Explorer = explorers.GetExplorer(e.JDB)
 	e.WWW = &http.Server{
 		Handler:      handler(e),
 		Addr:         ":" + cfg.C.Port["enso"],
@@ -36,8 +36,8 @@ func NewENSO() *ENSO {
 }
 
 func handler(e *ENSO) http.Handler {
-	r := mux.NewRouter()
-	s := r.Host("enso.okno.rs").Subrouter()
+	s := mux.NewRouter()
+	//s := r.Host("enso.okno.rs").Subrouter()
 	s.StrictSlash(true)
 
 	//s.HandleFunc("/", h.HomeHandler)
@@ -87,5 +87,5 @@ func handler(e *ENSO) http.Handler {
 
 	//a.HandleFunc("/", o.goodBye).Methods("GET")
 	//f.Headers("Access-Control-Allow-Origin", "*")
-	return handlers.CORS()(handlers.CompressHandler(utl.InterceptHandler(r, utl.DefaultErrorHandler)))
+	return handlers.CORS()(handlers.CompressHandler(utl.InterceptHandler(s, utl.DefaultErrorHandler)))
 }

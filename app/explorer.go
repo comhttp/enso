@@ -22,8 +22,8 @@ func (e *ENSO) ViewBlocks(w http.ResponseWriter, r *http.Request) {
 	v := mux.Vars(r)
 	per, _ := strconv.Atoi(v["per"])
 	page, _ := strconv.Atoi(v["page"])
-	ex := explorers.GetExplorer(e.JDB)
-	lastblock := ex.Status[v["coin"]].Blocks - 1
+	ex := explorers.GetExplorer(e.JDB,v["coin"])
+	lastblock := ex.Blocks - 1
 	fmt.Println("lastblocklastblocklastblock", lastblock)
 
 	lb := map[string]interface{}{
