@@ -6,7 +6,7 @@ require (
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/comhttp/explorer v0.0.0-20211207085422-cb5b683c4249
 	github.com/comhttp/jdb v0.0.0-20211130121204-fbecf44dbb2a // indirect
-	github.com/comhttp/jorm v0.0.0-20211130082649-4e2a9bf8a9f5
+	github.com/comhttp/jorm v0.0.0-20211207172058-38472bc3538c
 	github.com/disintegration/imaging v1.6.2
 	github.com/gofiber/fiber/v2 v2.23.0
 	github.com/muesli/smartcrop v0.3.0

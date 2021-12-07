@@ -20,9 +20,9 @@ type ENSO struct {
 	Router *fiber.App
 	APIs   map[string][]handlers.API
 	// Explorer *explorers.Explorer
-	jdbServers map[string]string
-	ExJDBs     map[string]*explorer.ExplorerJDBs
-
+	jdbServers   map[string]string
+	ExJDBs       map[string]*explorer.ExplorerJDBs
+	BitNoded     []string
 	jormCommands *handlers.JormCmds
 	config       cfg.Config
 	okno         strapi.StrapiRestClient
@@ -57,8 +57,9 @@ func NewENSO(path string) *ENSO {
 
 	for bitnodedCoin, _ := range bitnodedCoins {
 		e.ExJDBs[bitnodedCoin] = explorer.InitExplorerJDBs(jdbServers, "", bitnodedCoin)
-
+		e.BitNoded = append(e.BitNoded, bitnodedCoin)
 	}
+	fmt.Println("bitnodedCoins :   ", bitnodedCoins)
 
 	e.jdbServers = jdbServers
 	// e.WWW = &http.Server{
@@ -87,17 +88,37 @@ func (e *ENSO) ENSOrouter() {
 		AppName:       "ENSO",
 	})
 
-	coins, err := jdb.NewJDB(e.jdbServers["jdbcoins"])
-	utl.ErrorLog(err)
-
-	cq := coin.Queries(coins, "")
-
 	// Or extend your config for customization
 	e.Router.Use(cors.New(cors.Config{
 		AllowOrigins: "*",
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
 
+	// bitnodes := e.okno.GetAll("nodes", "bitnode=true&")
+
+	// for _, bitnode := range bitnodes {
+	// 	if bitnode["coin"].(map[string]interface{})["slug"] == coin {
+	// 		e.BitNodes = append(e.BitNodes, nodes.BitNode{
+	// 			IP:   bitnode["ip"].(string),
+	// 			Port: int64(bitnode["port"].(float64)),
+	// 		})
+	// 	}
+	// }
+
+	coins, err := jdb.NewJDB(e.jdbServers["jdbcoins"])
+	cq := coin.Queries(coins, "")
+	if err != nil {
+		utl.ErrorLog(err)
+	} else {
+		cq.WriteInfo("nodecoins", &coin.Coins{
+			N: len(e.BitNoded),
+			C: e.BitNoded,
+		})
+
+		fmt.Println("ccccccccccccccccccccccccccccc :   ", e.BitNoded)
+
+	}
+	fmt.Println("e.BitNodede.BitNodede.BitNodede.BitNodede.BitNoded :   ", e.BitNoded)
 	routes.CoinsRoutes(cq, e.okno, e.APIs, e.getJORMcommands(), e.ExJDBs, e.Router)
 
 	// routes.Explorer(e.okno, e.APIs, e.getJORMcommands(), e.ExJDBs, e.Router)
@@ -165,12 +186,12 @@ func (e *ENSO) getJORMcommands() *handlers.JormCmds {
 		return block
 	}
 	e.jormCommands.CMDs["tx"] = func(vars map[string]interface{}) map[string]interface{} {
-		block := e.ExJDBs[vars["coin"].(string)].GetTx(vars["coin"].(string), vars["id"].(string))
-		return block
+		tx := e.ExJDBs[vars["coin"].(string)].GetTx(vars["coin"].(string), vars["id"].(string))
+		return tx
 	}
 	e.jormCommands.CMDs["addr"] = func(vars map[string]interface{}) map[string]interface{} {
-		block := e.ExJDBs[vars["coin"].(string)].GetAddr(vars["coin"].(string), vars["id"].(string))
-		return block
+		addr := e.ExJDBs[vars["coin"].(string)].GetAddr(vars["coin"].(string), vars["id"].(string))
+		return addr
 	}
 	// e.jormCommands["blocks"] = func(vars map[string]interface{}) map[string]interface{} {
 	// 	lastblock := e.ExJDBs[vars["coin"]].ViewBlocks(vars["coin"])

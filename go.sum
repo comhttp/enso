@@ -79,8 +79,9 @@ github.com/comhttp/jdb v0.0.0-20211130121204-fbecf44dbb2a h1:NjgzsbaB5lcUB9eCw7Z
 github.com/comhttp/jdb v0.0.0-20211130121204-fbecf44dbb2a/go.mod h1:87xU11tItGlbAFHIPIFkUkRu2v0yqmXovwqR5+XLPik=
 github.com/comhttp/jdbc v0.0.0-20211121061740-8c5fa05cefa3 h1:zwQjWwCG1DrpbqPhieBR1ayf7fQjVU87TavEfCnWOr4=
 github.com/comhttp/jdbc v0.0.0-20211121061740-8c5fa05cefa3/go.mod h1:fjfdv27Is/VhqmkrDYyiXccGvCc/TxMTZPKuw+yUplw=
-github.com/comhttp/jorm v0.0.0-20211130082649-4e2a9bf8a9f5 h1:o6bz7Ho+rfzMhP42QTGn3GdcYPWT4tJa6WqgH9SmOks=
 github.com/comhttp/jorm v0.0.0-20211130082649-4e2a9bf8a9f5/go.mod h1:JGAbadupm3cmcx0uj9baEJ/gnpX7jrhrGe6GYeocq30=
+github.com/comhttp/jorm v0.0.0-20211207172058-38472bc3538c h1:sJK8xB1Zf1QCOkqBDfmghVYF7NhtwQwl0xkkYm/6g4k=
+github.com/comhttp/jorm v0.0.0-20211207172058-38472bc3538c/go.mod h1:JGAbadupm3cmcx0uj9baEJ/gnpX7jrhrGe6GYeocq30=
 github.com/coreos/etcd v3.3.10+incompatible/go.mod h1:uF7uidLiAD3TWHmW31ZFd/JWoc32PjwdhPthX9715RE=
 github.com/coreos/go-etcd v2.0.0+incompatible/go.mod h1:Jez6KQU2B/sWsbdaef3ED8NzMklzPG4d5KIOhIy30Tk=
 github.com/coreos/go-semver v0.2.0/go.mod h1:nnelYz7RCh+5ahJtPPxZlU+153eP4D4r3EedlOD2RNk=
