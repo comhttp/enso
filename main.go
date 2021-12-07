@@ -44,6 +44,6 @@ func main() {
 	// fmt.Println("Listening on port: ", cfg.C.Port["enso"])
 	e.ENSOrouter()
 
-	log.Fatal().Err(e.Router.Listen(":3000"))
+	log.Fatal().Err(e.Router.Listen(":14433"))
 
 }
