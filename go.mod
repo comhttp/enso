@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/andybalholm/brotli v1.0.4 // indirect
-	github.com/comhttp/explorer v0.0.0-20211130215441-ac960c42b551
+	github.com/comhttp/explorer v0.0.0-20211207085422-cb5b683c4249
 	github.com/comhttp/jdb v0.0.0-20211130121204-fbecf44dbb2a // indirect
 	github.com/comhttp/jorm v0.0.0-20211130082649-4e2a9bf8a9f5
 	github.com/disintegration/imaging v1.6.2
