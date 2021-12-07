@@ -121,9 +121,7 @@ func (ja *JormAPI) ViewTypes() func(c *fiber.Ctx) error {
 			"page": page,
 			"type": c.Params("type"),
 		}
-		return c.JSON(map[string]interface{}{
-			c.Params("type"): ja.getAPIdata(vars),
-		})
+		return c.JSON(ja.getAPIdata(vars))
 	}
 }
 func (ja *JormAPI) ViewType() func(c *fiber.Ctx) error {
