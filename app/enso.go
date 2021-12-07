@@ -164,6 +164,14 @@ func (e *ENSO) getJORMcommands() *handlers.JormCmds {
 		block := e.ExJDBs[vars["coin"].(string)].GetBlock(vars["coin"].(string), vars["id"].(string))
 		return block
 	}
+	e.jormCommands.CMDs["tx"] = func(vars map[string]interface{}) map[string]interface{} {
+		block := e.ExJDBs[vars["coin"].(string)].GetTx(vars["coin"].(string), vars["id"].(string))
+		return block
+	}
+	e.jormCommands.CMDs["addr"] = func(vars map[string]interface{}) map[string]interface{} {
+		block := e.ExJDBs[vars["coin"].(string)].GetAddr(vars["coin"].(string), vars["id"].(string))
+		return block
+	}
 	// e.jormCommands["blocks"] = func(vars map[string]interface{}) map[string]interface{} {
 	// 	lastblock := e.ExJDBs[vars["coin"]].ViewBlocks(vars["coin"])
 	// 	d := make(map[string]interface{})
