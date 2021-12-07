@@ -12,6 +12,7 @@ import (
 	"github.com/comhttp/jorm/pkg/jdb"
 	"github.com/comhttp/jorm/pkg/strapi"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 type ENSO struct {
@@ -90,6 +91,12 @@ func (e *ENSO) ENSOrouter() {
 	utl.ErrorLog(err)
 
 	cq := coin.Queries(coins, "")
+
+	// Or extend your config for customization
+	e.Router.Use(cors.New(cors.Config{
+		AllowOrigins: "*",
+		AllowHeaders: "Origin, Content-Type, Accept",
+	}))
 
 	routes.CoinsRoutes(cq, e.okno, e.APIs, e.getJORMcommands(), e.ExJDBs, e.Router)
 
