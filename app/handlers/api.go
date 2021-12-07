@@ -28,6 +28,7 @@ type JormAPI struct {
 	JORMcommands *JormCmds
 	ExJDB        map[string]*explorer.ExplorerJDBs
 	Coin         string
+	CQ           *coin.CoinsQueries
 }
 
 // func (j *jormAPI)getAPIdata(okno strapi.StrapiRestClient, apis []API, jormCommands *jormCmd, exJDB *explorer.ExplorerJDBs, coinSlug, command, variable string) (data map[string]interface{}) {

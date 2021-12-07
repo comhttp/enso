@@ -91,9 +91,9 @@ func (e *ENSO) ENSOrouter() {
 
 	cq := coin.Queries(coins, "")
 
-	routes.CoinsRoutes(cq, e.Router)
+	routes.CoinsRoutes(cq, e.okno, e.APIs, e.getJORMcommands(), e.ExJDBs, e.Router)
 
-	routes.Explorer(e.okno, e.APIs, e.getJORMcommands(), e.ExJDBs, e.Router)
+	// routes.Explorer(e.okno, e.APIs, e.getJORMcommands(), e.ExJDBs, e.Router)
 	//s := r.Host("enso.okno.rs").Subrouter()
 	// r.StrictSlash(true)
 	// return handlers.CORS()(handlers.CompressHandler(utl.InterceptHandler(r, utl.DefaultErrorHandler)))
