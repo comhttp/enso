@@ -5,6 +5,7 @@ import (
 	explorer "github.com/comhttp/explorer/app"
 	"github.com/comhttp/jorm/mod/coin"
 	"github.com/comhttp/jorm/pkg/strapi"
+	"github.com/gofiber/fiber/v2/middleware/monitor"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -22,6 +23,9 @@ func CoinsRoutes(cqs *coin.CoinsQueries, okno strapi.StrapiRestClient, apis map[
 			// Command: "lastblock",
 		},
 	}
+
+	app := r.Group("/system")
+	app.Get("/dashboard", monitor.New())
 
 	jormCoins := r.Group("/coins")
 	jormCoins.Get("/", handlers.CoinsHandler(ja.CQ))

@@ -9,6 +9,7 @@ require (
 	github.com/comhttp/jorm v0.0.0-20211207172058-38472bc3538c
 	github.com/disintegration/imaging v1.6.2
 	github.com/gofiber/fiber/v2 v2.23.0
+	github.com/gofiber/utils v0.1.2 // indirect
 	github.com/muesli/smartcrop v0.3.0
 	github.com/rs/zerolog v1.26.0
 	github.com/rwcarlsen/goexif v0.0.0-20190401172101-9e8deecbddbd
