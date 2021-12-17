@@ -14,18 +14,21 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/csrf"
 	"github.com/gofiber/fiber/v2/middleware/etag"
 	"github.com/gofiber/fiber/v2/middleware/favicon"
+	"github.com/gofiber/fiber/v2/middleware/recover"
+
 	"github.com/gofiber/utils"
 )
 
 func (e *ENSO) ENSOrouter() {
 	e.Router = fiber.New(fiber.Config{
-		Prefork:       true,
+		// Prefork:       true,
 		CaseSensitive: true,
 		StrictRouting: true,
 		ServerHeader:  "OKNO",
 		AppName:       "ENSO",
 	})
 
+	e.Router.Use(recover.New())
 	e.Router.Use(cors.New(cors.Config{
 		AllowOrigins: "*",
 		AllowHeaders: "Origin, Content-Type, Accept",
@@ -53,6 +56,7 @@ func (e *ENSO) ENSOrouter() {
 	e.Router.Use(favicon.New(favicon.Config{
 		File: "",
 	}))
+
 	// bitnodes := e.okno.GetAll("nodes", "bitnode=true&")
 
 	// for _, bitnode := range bitnodes {
@@ -83,5 +87,8 @@ func (e *ENSO) ENSOrouter() {
 
 	// log.Fatal().Err(e.Router.Listen(":3000"))
 	// log.Fatal(e.Router.Listen(":3000"))
-
+	// 404 Handler
+	e.Router.Use(func(c *fiber.Ctx) error {
+		return c.SendStatus(404)
+	})
 }
