@@ -1,6 +1,8 @@
 package app
 
 import (
+	"fmt"
+
 	"github.com/comhttp/enso/app/handlers"
 )
 
@@ -45,6 +47,7 @@ func (e *ENSO) getJORMcommands() *handlers.JormCmds {
 		lastblock := e.ExJDBs[vars["coin"].(string)].GetLastBlock(vars["coin"].(string))
 		d := make(map[string]interface{})
 		d["lastblock"] = lastblock
+		fmt.Println("lastblocklastblocklastblocklastblocklastbldd:::  ", lastblock)
 		return d
 	}
 	e.jormCommands.CMDs["blocks"] = func(vars map[string]interface{}) map[string]interface{} {

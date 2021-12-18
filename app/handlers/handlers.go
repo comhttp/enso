@@ -70,6 +70,9 @@ func (ja *JormAPI) LastBlock() func(c *fiber.Ctx) error {
 		}
 		ja.Coin = c.Params("coin")
 		ja.JORMcommands.Command = "lastblock"
+		fmt.Println("ja.Coinja.Coin:::  ", ja.Coin)
+		fmt.Println("vars3232323varsvarsn:::  ", ja.getAPIdata(vars))
+
 		return c.JSON(ja.getAPIdata(vars))
 	}
 }
