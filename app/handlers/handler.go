@@ -94,6 +94,7 @@ func LogoHandler(cq *coin.CoinsQueries) func(c *fiber.Ctx) error {
 	return func(c *fiber.Ctx) error {
 		size, err := strconv.ParseFloat(c.Params("size"), 32)
 		log.Print("Error encoding JSON: ", err)
+		c.Type("png")
 		_, err = c.Write([]byte(getLogo(cq, c.Params("coin"), size)))
 		return err
 	}
